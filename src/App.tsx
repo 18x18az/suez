@@ -1,34 +1,24 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import Button from '@mui/material/Button';
 
-import SimpleBottomNavigation from './components/BottomNav';
-import Navigator from './components/Navigator';
+import Events from './pages/Events';
+import SimpleBottomNavigation from './BottomNav';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Teams from './pages/Teams';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Navigator />
-      <FontAwesomeIcon icon={faCoffee} />
-      <Button variant="contained">Hello!</Button>
-      </header>
-      <SimpleBottomNavigation />
+      <BrowserRouter>
+        <Routes>
+          <Route path = "/" element={<Home />} />
+          <Route path = "/events" element={<Events />} />
+          <Route path = "/teams" element={<Teams />} />
+        </Routes>
+        <SimpleBottomNavigation />
+      </BrowserRouter>
     </div>
   );
 }
