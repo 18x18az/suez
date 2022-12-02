@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Suez
+18x18az webapp for live event updates.
+This repository is for the frontend, accessible at suez.18x18az.org.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

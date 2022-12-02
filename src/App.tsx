@@ -1,6 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import Button from '@mui/material/Button';
+
+import SimpleBottomNavigation from './components/BottomNav';
+import Navigator from './components/Navigator';
 
 function App() {
   return (
@@ -18,7 +24,11 @@ function App() {
         >
           Learn React
         </a>
+        <Navigator />
+      <FontAwesomeIcon icon={faCoffee} />
+      <Button variant="contained">Hello!</Button>
       </header>
+      <SimpleBottomNavigation />
     </div>
   );
 }
