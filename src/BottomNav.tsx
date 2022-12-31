@@ -20,23 +20,16 @@ export default function SimpleBottomNavigation() {
         }}
       >
         <BottomNavigationAction
-          label="Home"
+          label="Live Event"
           icon={<HomeIcon />}
-          value="home"
+          value="Live Event"
           component={Link}
           to="/"
         />
         <BottomNavigationAction
-          label="Events"
-          icon={<EventIcon />}
-          value="events"
-          component={Link}
-          to="/events"
-        />
-        <BottomNavigationAction
-          label="Teams"
+          label="Team Search"
           icon={<Diversity3Icon />}
-          value="teams"
+          value="Team Search"
           component={Link}
           to="/teams"
         />

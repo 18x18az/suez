@@ -1,6 +1,4 @@
 import './App.css';
-
-import Events from './pages/Events';
 import EventHome from './pages/components/EventHome';
 import SimpleBottomNavigation from './BottomNav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -26,10 +24,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path = "/" element={<Home />} />
-          <Route path = "/events" element={<Events />} />
+          <Route path = "/" element={<EventHome />} />
           {/* this is not the best way to do the below: https://reactrouter.com/en/main/route/route */ }
-          <Route path = "/events/*" element={<EventHome robotEventsCode={"RE-VRC-22-9266"} />} />
+          <Route path = "/events/*" element={<EventHome />} />
           <Route path = "/teams" element={<Teams />} />
         </Routes>
         <SimpleBottomNavigation />

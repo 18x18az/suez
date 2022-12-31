@@ -3,11 +3,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import QualRankings from './event/QualRankings'
+import Queuing from './event/Queuing';
+import Rankings from './event/Rankings';
+import Info from './event/Info';
 
-type EventProps = {
-    robotEventsCode: String;
-};
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -39,7 +38,7 @@ function a11yProps(index: number) {
     'aria-controls': `simple-tabpanel-${index}`,
   };
 }
-const EventHome = ({ robotEventsCode }: EventProps) => {
+const EventHome = () => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -49,21 +48,22 @@ const EventHome = ({ robotEventsCode }: EventProps) => {
   return (
     <Box sx={{ width: '100%' }}>
     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-      <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" variant="scrollable" scrollButtons="auto">
+      <h2>Event Name</h2>
+      <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="auto">
         <Tab label="Info" {...a11yProps(0)} />
         <Tab label="Rankings" {...a11yProps(1)} />
-        <Tab label="Schedule" {...a11yProps(2)} />
+        <Tab label="Queuing" {...a11yProps(2)} />
         <Tab label="Results" {...a11yProps(3)} />
       </Tabs>
     </Box>
       <TabPanel value={value} index={0}>
-      Info
+      <Info/>
     </TabPanel>
     <TabPanel value={value} index={1}>
-    <QualRankings/>
+    <Rankings/>
     </TabPanel>
     <TabPanel value={value} index={2}>
-    Schedule
+      <Queuing />
     </TabPanel>
     <TabPanel value={value} index={3}>
     Results
