@@ -2,9 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import HomeIcon from '@mui/icons-material/Home';
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import Diversity3Icon from '@mui/icons-material/Diversity3';
-import EventIcon from '@mui/icons-material/Event';
 import { Link } from 'react-router-dom';
 
 export default function SimpleBottomNavigation() {
@@ -21,15 +20,15 @@ export default function SimpleBottomNavigation() {
       >
         <BottomNavigationAction
           label="Live Event"
-          icon={<HomeIcon />}
+          icon={<EmojiEventsIcon />}
           value="Live Event"
           component={Link}
           to="/"
         />
         <BottomNavigationAction
-          label="Team Search"
+          label="Team List"
           icon={<Diversity3Icon />}
-          value="Team Search"
+          value="Team List"
           component={Link}
           to="/teams"
         />

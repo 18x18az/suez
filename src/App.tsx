@@ -1,9 +1,9 @@
 import './App.css';
 import EventHome from './pages/components/EventHome';
-import SimpleBottomNavigation from './BottomNav';
+import SimpleBottomNavigation from './pages/components/BottomNav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
-import Teams from './pages/Teams';
+import TeamList from './pages/Teams';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -27,7 +27,7 @@ function App() {
           <Route path = "/" element={<EventHome />} />
           {/* this is not the best way to do the below: https://reactrouter.com/en/main/route/route */ }
           <Route path = "/events/*" element={<EventHome />} />
-          <Route path = "/teams" element={<Teams />} />
+          <Route path = "/teams" element={<TeamList />} />
         </Routes>
         <SimpleBottomNavigation />
       </BrowserRouter>

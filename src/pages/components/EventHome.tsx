@@ -48,12 +48,10 @@ const EventHome = () => {
   return (
     <Box sx={{ width: '100%' }}>
     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-      <h2>Event Name</h2>
-      <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="auto">
+      <Tabs value={value} onChange={handleChange} variant="fullWidth" scrollButtons="auto" centered={true}>
         <Tab label="Info" {...a11yProps(0)} />
         <Tab label="Rankings" {...a11yProps(1)} />
         <Tab label="Queuing" {...a11yProps(2)} />
-        <Tab label="Results" {...a11yProps(3)} />
       </Tabs>
     </Box>
       <TabPanel value={value} index={0}>
@@ -64,9 +62,6 @@ const EventHome = () => {
     </TabPanel>
     <TabPanel value={value} index={2}>
       <Queuing />
-    </TabPanel>
-    <TabPanel value={value} index={3}>
-    Results
     </TabPanel>
     </Box>
     );
