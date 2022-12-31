@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import EventHome from './pages/components/EventHome';
+import SimpleBottomNavigation from './pages/components/BottomNav';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import TeamList from './pages/Teams';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 function App() {
   return (
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path = "/" element={<EventHome />} />
+          {/* this is not the best way to do the below: https://reactrouter.com/en/main/route/route */ }
+          <Route path = "/events/*" element={<EventHome />} />
+          <Route path = "/teams" element={<TeamList />} />
+        </Routes>
+        <SimpleBottomNavigation />
+      </BrowserRouter>
     </div>
+    </ThemeProvider>
   );
 }
 
