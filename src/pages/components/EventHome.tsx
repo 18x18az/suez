@@ -5,7 +5,6 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Queuing from './event/Queuing';
 import Rankings from './event/Rankings';
-import Info from './event/Info';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -49,19 +48,15 @@ const EventHome = () => {
     <Box sx={{ width: '100%' }}>
     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
       <Tabs value={value} onChange={handleChange} variant="fullWidth" scrollButtons="auto" centered={true}>
-        <Tab label="Info" {...a11yProps(0)} />
+        <Tab label="Queuing" {...a11yProps(0)} />
         <Tab label="Rankings" {...a11yProps(1)} />
-        <Tab label="Queuing" {...a11yProps(2)} />
       </Tabs>
     </Box>
-      <TabPanel value={value} index={0}>
-      <Info/>
+    <TabPanel value={value} index={0}>
+      <Queuing />
     </TabPanel>
     <TabPanel value={value} index={1}>
     <Rankings/>
-    </TabPanel>
-    <TabPanel value={value} index={2}>
-      <Queuing />
     </TabPanel>
     </Box>
     );

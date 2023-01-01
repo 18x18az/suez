@@ -8,7 +8,7 @@ This repository is for the frontend, accessible at suez.18x18az.org.
 ## Building the project
 ### Prerequisites
 - node, npm
-- `suez-server` set-up and running somewhere
+- `bifrost` set-up and running somewhere
 ```bash
 # clone the repository
 $ 
