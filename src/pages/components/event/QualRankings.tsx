@@ -21,6 +21,7 @@ const QualRankings = () => {
                             <TableCell align='center'>WP / AP / SP</TableCell>
                         </TableRow>
                     </TableHead>
+                    {/** remember to do https://stackoverflow.com/questions/50691049/how-to-add-link-react-router-per-each-material-ui-tablerow */}
                 </Table>
             </nav>
         </Box>

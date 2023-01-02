@@ -11,7 +11,7 @@ This repository is for the frontend, accessible at suez.18x18az.org.
 - `bifrost` set-up and running somewhere
 ```bash
 # clone the repository
-$ 
+$ git@github.com:18x18az/suez.git
 
 # install dependencies
 $ npm install
