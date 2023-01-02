@@ -4,8 +4,14 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
+import { useEffect } from 'react';
+import { bifrost } from '../ws';
 
 const TeamList = () => {
+    useEffect(() => {
+        bifrost.get(['teams']);
+    });
+
     return(
         <div>
         { /*<h1>18x18az Suez</h1>*/}
