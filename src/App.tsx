@@ -12,6 +12,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Component } from 'react';
 import { ITeams, IMatchList, IPath } from '@18x18az/rosetta';
 import { bifrost } from './ws';
+import SkillsRankings from './pages/components/event/SkillsRankings';
+import QualRankings from './pages/components/event/QualRankings';
 
 interface IProps {
 }
@@ -72,9 +74,10 @@ class App extends Component<IProps, IState> {
         <BrowserRouter>
           <Routes>
             <Route path = "/" element={<EventHome />} />
-            {/* this is not the best way to do the below: https://reactrouter.com/en/main/route/route */ }
-            <Route path = "/events/*" element={<EventHome />} />
+            {/* how to do routes for teams: https://reactrouter.com/en/main/route/route */ }
             <Route path = "/teams" element={<TeamList />} />
+            <Route path = "/rankings/qual" element={<QualRankings />} />
+            <Route path = "/rankings/skills" element={<SkillsRankings />} />
           </Routes>
           <SimpleBottomNavigation />
         </BrowserRouter>
