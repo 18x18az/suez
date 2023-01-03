@@ -1,10 +1,16 @@
-import Box from '@mui/material/Box';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
+import { ITeams, IPath } from '@18x18az/rosetta';
+import { Box } from '@mui/material';
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+
+interface QRankingsProps {
+    teams: ITeams | null
+    lastMessagePath: IPath | null
+    lastMessageBody: any
+}
+
+interface QRankingsState {
+    rankings: any // TODO: update
+}
 
 const QualRankings = () => {
     return(
