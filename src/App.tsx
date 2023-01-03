@@ -1,6 +1,5 @@
 import './App.css';
 import TopNav from './pages/components/TopNav';
-import SimpleBottomNavigation from './pages/components/BottomNav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import TeamList from './pages/Teams';
 import '@fontsource/roboto/300.css';
@@ -14,8 +13,7 @@ import { ITeams, IMatchList, IPath } from '@18x18az/rosetta';
 import { bifrost } from './ws';
 import SkillsRankings from './pages/components/event/SkillsRankings';
 import QualRankings from './pages/components/event/QualRankings';
-import Queuing from './pages/components/event/Queuing';
-import { Box } from '@mui/system';
+import { Queuing } from './pages/components/event/Queuing';
 
 interface IProps {
 }
@@ -78,16 +76,20 @@ class App extends Component<IProps, IState> {
         <BrowserRouter>
         <TopNav/>
           <Routes>
-            <Route path = "/" element={<Queuing />} />
+            <Route path="/"
+              element={<Queuing
+                teams={this.state.teams}
+                matches={this.state.matches}
+                lastMessagePath={this.state.lastMessagePath}
+                lastMessageBody={this.state.lastMessagePayload}
+            />} />
             {/* how to do routes for teams: https://reactrouter.com/en/main/route/route */ }
             <Route path="/teams"
               element={<TeamList
                 teams={this.state.teams}
                 lastMessagePath={this.state.lastMessagePath}
                 lastMessageBody={this.state.lastMessagePayload}
-                />
-            }
-          />
+            />}/>
             <Route path = "/rankings/qual" element={<QualRankings />} />
             <Route path = "/rankings/skills" element={<SkillsRankings />} />
           </Routes>

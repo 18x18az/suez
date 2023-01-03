@@ -1,13 +1,8 @@
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import { useEffect, Component, Fragment } from 'react';
+import { Box } from '@mui/material';
+import { List, ListItem, ListItemButton, ListItemText, Divider} from '@mui/material';
+import { Component, Fragment } from 'react';
 import { bifrost } from '../ws';
 import { ITeams, IPath, ITeam } from '@18x18az/rosetta';
-import { CircularProgress } from '@mui/material';
 import Waiting from './components/Waiting';
 
 interface TeamListProps {
