@@ -79,7 +79,6 @@ class App extends Component<IProps, IState> {
             <Route path = "/rankings/qual" element={<QualRankings />} />
             <Route path = "/rankings/skills" element={<SkillsRankings />} />
           </Routes>
-          <SimpleBottomNavigation />
         </BrowserRouter>
       </div>
       </ThemeProvider>
