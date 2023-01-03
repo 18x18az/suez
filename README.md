@@ -2,16 +2,16 @@
 18x18az webapp for live event updates.
 This repository is for the frontend, accessible at suez.18x18az.org.
 
-
 ## Support
 
 ## Building the project
 ### Prerequisites
 - node, npm
-- `suez-server` set-up and running somewhere
+- `bifrost` set-up and running somewhere
 ```bash
 # clone the repository
-$ 
+$ git@github.com:18x18az/suez.git
+$ cd suez
 
 # install dependencies
 $ npm install
