@@ -4,7 +4,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-import { useEffect, Component } from 'react';
+import { useEffect, Component, Fragment } from 'react';
 import { bifrost } from '../ws';
 import { ITeams, IPath, ITeam } from '@18x18az/rosetta';
 
@@ -46,7 +46,8 @@ class TeamList extends Component<TeamListProps, TeamListState> {
     render() {
         console.log(this.state.teams)
         if (this.state.teams) {
-            let teams: Array<ITeam> = [];
+            let teams: ITeam[] = [];
+
             for (const property in this.state.teams) {
                 let team: ITeam = {
                     number: this.state.teams[property].number,
@@ -56,13 +57,28 @@ class TeamList extends Component<TeamListProps, TeamListState> {
                 };
                 teams.push(team);
             }
+            console.log(teams);
             return(
                 <div>
                 { /*<h1>18x18az Suez</h1>*/}
                 <Box sx={{ width: '100%', marginBottom: '20vh' }}>
                     <nav>
-                        <List>
-                        </List>
+                    <List>
+                    {
+                        teams.map((team: ITeam) => {
+                            return (
+                                <Fragment>
+                                    <ListItem>
+                                    <ListItemButton component="a" href="#">
+                                    <ListItemText primary={team.number} secondary={team.name}/>
+                                    </ListItemButton>
+                                    </ListItem>
+                                    <Divider />
+                                </Fragment>
+                            )
+                        })
+                    }
+                    </List>
                     </nav>
                 </Box>
                 </div>
