@@ -4,6 +4,7 @@ import { Component } from 'react';
 import { bifrost } from '../../../ws';
 import Waiting from '../Waiting';
 import { Match } from './Match';
+import { getNextMatches } from '../../../utils/Match';
 
 interface QueuingProps {
     teams: ITeams | null,
@@ -41,18 +42,31 @@ export class Queuing extends Component<QueuingProps, QueuingState> {
 
     render() {
         if (this.state.field && this.props.teams && this.props.matches) {
+            const teams = this.props.teams;
+            const state = this.state.field;
+            const match = this.props.matches[state.match];
+            const nextMatches = getNextMatches(this.props.matches, match, 5);
+
+            let upcomingMatchItems = [];
+            if (nextMatches) {
+                for (let i = 0; i < nextMatches.length; i++) {
+                    const match = nextMatches[i];
+                    const matchItem = <Match teams={teams} match={match} />
+                    upcomingMatchItems.push(matchItem);
+                }
+            }
+
             return (
                 <Table>
                     <TableHead>
                         <TableRow>
                             <TableCell align="center" colSpan={3}>
-                                Upcoming Matches
+                                <h1 style={{ margin: 0 }}>Upcoming Matches</h1>
                             </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                    <Match teams={this.props.teams}/>
-
+                        {upcomingMatchItems}
                     </TableBody>
                 </Table>
             )
