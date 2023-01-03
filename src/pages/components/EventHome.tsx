@@ -67,7 +67,7 @@ const EventHome = () => {
     <SkillsRankings/>
     </TabPanel>
     <TabPanel value={value} index={3}>
-    <TeamList/>
+      <h1>team lsit</h1>
     </TabPanel>
     </Box>
     );

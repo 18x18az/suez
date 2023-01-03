@@ -75,7 +75,14 @@ class App extends Component<IProps, IState> {
           <Routes>
             <Route path = "/" element={<EventHome />} />
             {/* how to do routes for teams: https://reactrouter.com/en/main/route/route */ }
-            <Route path = "/teams" element={<TeamList />} />
+            <Route path="/teams"
+              element={<TeamList
+                teams={this.state.teams}
+                lastMessagePath={this.state.lastMessagePath}
+                lastMessageBody={this.state.lastMessagePayload}
+                />
+            }
+          />
             <Route path = "/rankings/qual" element={<QualRankings />} />
             <Route path = "/rankings/skills" element={<SkillsRankings />} />
           </Routes>
