@@ -15,7 +15,6 @@ const SkillsRankings = () => {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell align='left'>Rank</TableCell>
                             <TableCell align='left'>Team</TableCell>
                             <TableCell align='center'>Total</TableCell>
                             <TableCell align='center'>Highest Programming</TableCell>

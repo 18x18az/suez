@@ -15,7 +15,6 @@ const QualRankings = () => {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell align='left'>Rank</TableCell>
                             <TableCell align='left'>Team</TableCell>
                             <TableCell align='center'>W-L-T</TableCell>
                             <TableCell align='center'>WP / AP / SP</TableCell>
