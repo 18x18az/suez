@@ -11,8 +11,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Component } from 'react';
 import { ITeams, IMatchList, IPath } from '@18x18az/rosetta';
 import { bifrost } from './ws';
-import SkillsRankings from './pages/components/event/SkillsRankings';
-import QualRankings from './pages/components/event/QualRankings';
+import { SkillsRankings } from './pages/components/event/SkillsRankings';
+import { QualRankings } from './pages/components/event/QualRankings';
 import { Queuing } from './pages/components/event/Queuing';
 
 interface IProps {
@@ -82,7 +82,7 @@ class App extends Component<IProps, IState> {
                 matches={this.state.matches}
                 lastMessagePath={this.state.lastMessagePath}
                 lastMessageBody={this.state.lastMessagePayload}
-            />} />
+            />}/>
             {/* how to do routes for teams: https://reactrouter.com/en/main/route/route */ }
             <Route path="/teams"
               element={<TeamList
@@ -90,8 +90,18 @@ class App extends Component<IProps, IState> {
                 lastMessagePath={this.state.lastMessagePath}
                 lastMessageBody={this.state.lastMessagePayload}
             />}/>
-            <Route path = "/rankings/qual" element={<QualRankings />} />
-            <Route path = "/rankings/skills" element={<SkillsRankings />} />
+            <Route path = "/rankings/qual"
+              element={<QualRankings
+                teams={this.state.teams}
+                lastMessagePath={this.state.lastMessagePath}
+                lastMessageBody={this.state.lastMessagePayload}
+            />}/>
+            <Route path="/rankings/skills"
+              element={<SkillsRankings
+                teams={this.state.teams}
+                lastMessagePath={this.state.lastMessagePath}
+                lastMessageBody={this.state.lastMessagePayload}
+            />}/>
           </Routes>
         </BrowserRouter>
       </div>
