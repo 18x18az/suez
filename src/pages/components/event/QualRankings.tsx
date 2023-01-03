@@ -1,6 +1,9 @@
-import { ITeams, IPath } from '@18x18az/rosetta';
+import { ITeams, IPath, IRankingData, IRankings } from '@18x18az/rosetta';
 import { Box } from '@mui/material';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Component } from 'react';
+import { bifrost } from '../../../ws';
+import Waiting from '../Waiting';
 
 interface QRankingsProps {
     teams: ITeams | null
@@ -9,29 +12,79 @@ interface QRankingsProps {
 }
 
 interface QRankingsState {
-    rankings: any // TODO: update
+    rankings: IRankings | null
 }
 
-const QualRankings = () => {
-    return(
-        <div>
-        { /*<h1>18x18az Suez</h1>*/}
-        <Box sx={{ width: '100%', marginBottom: '20vh' }}>
-            <nav>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell align='left'>Team</TableCell>
-                            <TableCell align='center'>W-L-T</TableCell>
-                            <TableCell align='center'>WP / AP / SP</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    {/** remember to do https://stackoverflow.com/questions/50691049/how-to-add-link-react-router-per-each-material-ui-tablerow */}
-                </Table>
-            </nav>
-        </Box>
-        </div>
-    );
-};
+function formatWPAPSP(data: IRankingData): string {
+    let wp = data.avgWP;
+    let ap = data.avgAP;
+    let sp = data.avgSP;
+    return wp + " / " + ap + " / " + sp;
+}
 
-export default QualRankings;
+export class QualRankings extends Component<QRankingsProps, QRankingsState> {
+    constructor(props: QRankingsProps) {
+        super(props);
+
+        bifrost.get(['teams']);
+        bifrost.get(['rankings']);
+        this.state = {
+            rankings: null
+        }
+    }
+
+    static getDerivedStateFromProps(nextProps: QRankingsProps, prevState: QRankingsState) {
+        if (nextProps.lastMessagePath) {
+            if (nextProps.lastMessagePath[0] === "rankings") {
+                return ({
+                    rankings: nextProps.lastMessageBody
+                })
+            }
+        }
+
+        return null;
+    }
+
+    render() {
+        if (this.state.rankings && this.props.teams) {
+
+            return(
+                <div>
+                { /*<h1>18x18az Suez</h1>*/}
+                <Box sx={{ width: '100%'}}>
+                    <nav>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align='left'>Team</TableCell>
+                                    <TableCell align='center'>W-L-T</TableCell>
+                                    <TableCell align='center'>WP / AP / SP</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                            {
+                                this.state.rankings.map((rankingData: IRankingData) => {
+                                    return (
+                                        <TableRow>
+                                            <TableCell align='left'><b>{rankingData.rank}.</b> {this.props.teams![rankingData.team].number}</TableCell>
+                                            <TableCell align='center'>{rankingData.record}</TableCell>
+                                            <TableCell align='center'>{formatWPAPSP(rankingData)}</TableCell>
+                                        </TableRow>
+                                    )
+                                })
+                            }
+                            </TableBody>
+                        </Table>
+                    </nav>
+                </Box>
+                </div>
+            );
+        }
+        else {
+            return (
+                <Waiting />
+            )
+        }
+    }
+
+}
