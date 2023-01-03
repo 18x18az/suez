@@ -7,6 +7,8 @@ import Divider from '@mui/material/Divider';
 import { useEffect, Component, Fragment } from 'react';
 import { bifrost } from '../ws';
 import { ITeams, IPath, ITeam } from '@18x18az/rosetta';
+import { CircularProgress } from '@mui/material';
+import Waiting from './components/Waiting';
 
 interface TeamListProps {
     teams: ITeams | null
@@ -86,7 +88,7 @@ class TeamList extends Component<TeamListProps, TeamListState> {
         }
         else {
             return(
-                <h1>teams unavailable</h1>
+                <Waiting />
             );
         }
 

@@ -15,6 +15,7 @@ import { bifrost } from './ws';
 import SkillsRankings from './pages/components/event/SkillsRankings';
 import QualRankings from './pages/components/event/QualRankings';
 import Queuing from './pages/components/event/Queuing';
+import { Box } from '@mui/system';
 
 interface IProps {
 }
@@ -52,7 +53,9 @@ class App extends Component<IProps, IState> {
     const route = path[0];
     if (route === "teams") {
       this.setState({
-        teams: payload
+        teams: payload,
+        lastMessagePath: path,
+        lastMessagePayload: payload
       });
     } else if (route === "matches") {
       this.setState({
