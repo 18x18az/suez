@@ -1,6 +1,6 @@
 {
   "name": "suez-frontend",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@18x18az/ouija": "^1.1.1",
