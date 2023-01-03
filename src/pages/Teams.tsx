@@ -4,6 +4,7 @@ import { Component, Fragment } from 'react';
 import { bifrost } from '../ws';
 import { ITeams, IPath, ITeam } from '@18x18az/rosetta';
 import Waiting from './components/Waiting';
+import { Link } from 'react-router-dom';
 
 interface TeamListProps {
     teams: ITeams | null
@@ -28,7 +29,6 @@ class TeamList extends Component<TeamListProps, TeamListState> {
         if (nextProps.lastMessagePath) {
             const route = nextProps.lastMessagePath[0];
             if (route === "teams") {
-                console.log(nextProps.lastMessageBody);
                 return { teams: nextProps.lastMessageBody };
             }
             else {
@@ -41,7 +41,6 @@ class TeamList extends Component<TeamListProps, TeamListState> {
     }
 
     render() {
-        console.log(this.state.teams)
         if (this.state.teams) {
             let teams: ITeam[] = [];
 
@@ -54,11 +53,10 @@ class TeamList extends Component<TeamListProps, TeamListState> {
                 };
                 teams.push(team);
             }
-            console.log(teams);
             return(
                 <div>
                 { /*<h1>18x18az Suez</h1>*/}
-                <Box sx={{ width: '100%', marginBottom: '20vh' }}>
+                <Box sx={{ width: '100%'}}>
                     <nav>
                     <List>
                     {
@@ -66,7 +64,7 @@ class TeamList extends Component<TeamListProps, TeamListState> {
                             return (
                                 <Fragment>
                                     <ListItem>
-                                    <ListItemButton component="a" href="#">
+                                    <ListItemButton component={Link} to={`/teams/${team.number}`}>
                                     <ListItemText primary={team.number} secondary={team.name}/>
                                     </ListItemButton>
                                     </ListItem>

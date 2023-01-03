@@ -14,6 +14,7 @@ import { bifrost } from './ws';
 import { SkillsRankings } from './pages/components/event/SkillsRankings';
 import { QualRankings } from './pages/components/event/QualRankings';
 import { Queuing } from './pages/components/event/Queuing';
+import { Team } from './pages/components/Team';
 
 interface IProps {
 }
@@ -102,6 +103,12 @@ class App extends Component<IProps, IState> {
                 lastMessagePath={this.state.lastMessagePath}
                 lastMessageBody={this.state.lastMessagePayload}
             />}/>
+            <Route path="/teams/:number"
+              element={<Team
+                teams={this.state.teams}
+                lastMessagePath={this.state.lastMessagePath}
+                lastMessageBody={this.state.lastMessagePayload}
+              />}/>
           </Routes>
         </BrowserRouter>
       </div>

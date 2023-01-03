@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
 import { AppBar } from '@mui/material';
@@ -11,7 +10,7 @@ const currentTab = () => {
   if (path === "/") return 0;
   else if (path === "/rankings/qual") return 1;
   else if (path === "/rankings/skills") return 2;
-  else if (path === "/teams") return 3;
+  else if (path.substring(0,6) === "/teams") return 3;
 }
 const TopNav = () => {
   const [value, setValue] = useState(currentTab);

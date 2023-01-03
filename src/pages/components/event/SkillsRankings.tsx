@@ -4,6 +4,7 @@ import { ITeams, IPath, ISkillsRankings, ISkillsRankingData } from '@18x18az/ros
 import { Component } from 'react';
 import { bifrost } from '../../../ws';
 import Waiting from '../Waiting';
+import { Link } from 'react-router-dom';
 
 interface SRankingsProps {
     teams: ITeams | null
@@ -41,8 +42,7 @@ export class SkillsRankings extends Component<SRankingsProps, SRankingsState> {
         if (this.props.teams && this.state.rankings) {
             return (
                 <div>
-                { /*<h1>18x18az Suez</h1>*/}
-                <Box sx={{ width: '100%', marginBottom: '20vh' }}>
+                <Box sx={{ width: '100%' }}>
                     <nav>
                         <Table>
                             <TableHead>
@@ -57,7 +57,8 @@ export class SkillsRankings extends Component<SRankingsProps, SRankingsState> {
                                 {
                                     this.state.rankings.map((skillsData: ISkillsRankingData) => {
                                         return (
-                                            <TableRow>
+                                            <TableRow component={Link} to={`/teams/${this.props.teams![skillsData.team].number}`}
+                                                        sx={{ textDecoration: 'none' }}>
                                                 <TableCell><b>{skillsData.rank}.</b> {this.props.teams![skillsData.team].number}</TableCell>
                                                 <TableCell align='center'>{skillsData.total}</TableCell>
                                                 <TableCell align='center'>{skillsData.highProgramming}</TableCell>
