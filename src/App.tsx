@@ -1,5 +1,5 @@
 import './App.css';
-import EventHome from './pages/components/EventHome';
+import TopNav from './pages/components/TopNav';
 import SimpleBottomNavigation from './pages/components/BottomNav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import TeamList from './pages/Teams';
@@ -14,6 +14,7 @@ import { ITeams, IMatchList, IPath } from '@18x18az/rosetta';
 import { bifrost } from './ws';
 import SkillsRankings from './pages/components/event/SkillsRankings';
 import QualRankings from './pages/components/event/QualRankings';
+import Queuing from './pages/components/event/Queuing';
 
 interface IProps {
 }
@@ -72,8 +73,9 @@ class App extends Component<IProps, IState> {
         <CssBaseline />
       <div className="App">
         <BrowserRouter>
+        <TopNav/>
           <Routes>
-            <Route path = "/" element={<EventHome />} />
+            <Route path = "/" element={<Queuing />} />
             {/* how to do routes for teams: https://reactrouter.com/en/main/route/route */ }
             <Route path="/teams"
               element={<TeamList
