@@ -4,6 +4,7 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
 import { Component } from 'react';
 import { bifrost } from '../../../ws';
 import Waiting from '../Waiting';
+import { Link } from 'react-router-dom';
 
 interface QRankingsProps {
     teams: ITeams | null
@@ -65,7 +66,8 @@ export class QualRankings extends Component<QRankingsProps, QRankingsState> {
                             {
                                 this.state.rankings.map((rankingData: IRankingData) => {
                                     return (
-                                        <TableRow>
+                                        <TableRow component={Link} to={`/teams/${this.props.teams![rankingData.team].number}`}
+                                                    sx={{ textDecoration: 'none' }}>
                                             <TableCell align='left'><b>{rankingData.rank}.</b> {this.props.teams![rankingData.team].number}</TableCell>
                                             <TableCell align='center'>{rankingData.record}</TableCell>
                                             <TableCell align='center'>{formatWPAPSP(rankingData)}</TableCell>
