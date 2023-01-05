@@ -29,9 +29,11 @@ export const Match = (props: MatchProps) => {
                 <Team id={(red as IAllianceTeams).team1} color={"redMatch"} teams={props.teams}/>
                 <Team id={(red as IAllianceTeams).team2} color={"redMatch"} teams={props.teams}/>
             </TableCell>
+            <TableCell/>
             <TableCell align="center">
                 <h2 className="matchName">{matchName}</h2>
             </TableCell>
+            <TableCell/>
             <TableCell align="center">
                 <Team id={(blue as IAllianceTeams).team1} color={"blueMatch"} teams={props.teams}/>
                 <Team id={(blue as IAllianceTeams).team2} color={"blueMatch"} teams={props.teams}/>

@@ -159,24 +159,10 @@ export const Team = (props: TeamProps) => {
             }
         });
 
-        // results section
-        let resultsOutput: any = 
-                <p>No match results found!</p>;
+        // search for results
         let results: ISimpleMatchResult[] = [];
         for (const property in data.results) {
             results.push(data.results[property]);
-        }
-        if (results.length > 0) {
-            resultsOutput = []
-            results.forEach((result: ISimpleMatchResult) => {
-                const resultItem =<ScoredMatch
-                    teams={props.teams!}
-                    name={result.name}
-                    match={data.schedule[result.name]}
-                    scoreBlue={result.blue.score}
-                    scoreRed={result.red.score}/>
-                resultsOutput.push(resultItem);
-            });
         }
 
         let matches: IMatchInfo[] = [];
@@ -186,9 +172,31 @@ export const Team = (props: TeamProps) => {
         let scheduleOutput = [];
         if (matches) {
             for (let i = 0; i < matches.length; i++) {
-                const match = matches[i];
-                const matchItem = <Match teams={props.teams} match={match} />
-                scheduleOutput.push(matchItem);
+                // search for match name in results
+                // if we find it, push a ScoredMatch instead
+                let isScored: boolean = false;
+                for (let j = 0; j < results.length; j++) {
+                    console.log(j)
+                    if (matches[i].matchId === results[j].name) {
+                        isScored = true;
+                        break;
+                    }
+                }
+                
+                // generate output
+                if (isScored) {
+                    const resultItem = <ScoredMatch
+                        teams={props.teams!}
+                        name={data.results[matches[i].matchId].name}
+                        match={matches[i]}
+                        scoreBlue={data.results[matches[i].matchId].blue.score}
+                        scoreRed={data.results[matches[i].matchId].red.score}/>;
+                    scheduleOutput.push(resultItem);
+                }
+                else {
+                    const matchItem = <Match teams={props.teams} match={matches[i]} />
+                    scheduleOutput.push(matchItem);
+                }
             }
         }
         return (
@@ -210,18 +218,6 @@ export const Team = (props: TeamProps) => {
                 <AccordionDetails>
                 {skillsOutput}
                 </AccordionDetails>
-                </Accordion>
-                <Accordion>
-                    <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
-                        Match Results
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Table>
-                            <TableBody>
-                            {resultsOutput}
-                            </TableBody>
-                        </Table>
-                    </AccordionDetails>
                 </Accordion>
                 <Accordion defaultExpanded={true}>
                     <AccordionSummary  expandIcon={<ExpandMoreIcon/>}>
