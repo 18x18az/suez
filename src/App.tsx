@@ -15,7 +15,6 @@ import { SkillsRankings } from './pages/components/event/SkillsRankings';
 import { QualRankings } from './pages/components/event/QualRankings';
 import { Team } from './pages/components/Team';
 import { Home } from './pages/components/event/Home';
-import { Box } from '@mui/material';
 
 interface IProps {
 }
