@@ -20,7 +20,7 @@ interface MatchProps {
 }
 
 export const Match = (props: MatchProps) => {
-    const matchName = makeShortMatchName(props.match);
+    const matchName = props.match.matchId;
     const red: IAllianceTeams | string = props.match.red;
     const blue: IAllianceTeams | string = props.match.blue;
     return (
