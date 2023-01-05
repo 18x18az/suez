@@ -13,8 +13,8 @@ import { ITeams, IMatchList, IPath } from '@18x18az/rosetta';
 import { bifrost } from './ws';
 import { SkillsRankings } from './pages/components/event/SkillsRankings';
 import { QualRankings } from './pages/components/event/QualRankings';
-import { Queuing } from './pages/components/event/Queuing';
 import { Team } from './pages/components/Team';
+import { Home } from './pages/components/event/Home';
 
 interface IProps {
 }
@@ -78,7 +78,7 @@ class App extends Component<IProps, IState> {
         <TopNav/>
           <Routes>
             <Route path="/"
-              element={<Queuing
+              element={<Home
                 teams={this.state.teams}
                 matches={this.state.matches}
                 lastMessagePath={this.state.lastMessagePath}
