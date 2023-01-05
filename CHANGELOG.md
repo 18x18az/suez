@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.1.0](https://github.com/18x18az/suez/compare/v1.0.0...v1.1.0) (2023-01-05)
+
+
+### Features
+
+* appbar is fixed ([74d5756](https://github.com/18x18az/suez/commit/74d575648fe6fa603bc1b91c32cf76def4839d89))
+* match results in team page ([caaf99e](https://github.com/18x18az/suez/commit/caaf99e99f8fb5eae8508c9e30ff97f857da078c))
+* ranking, skills, schedule in team page ([844100c](https://github.com/18x18az/suez/commit/844100c5bf7130bc5b2492236de3f3b6a585461b))
+* show results in schedule ([00a9f4f](https://github.com/18x18az/suez/commit/00a9f4f68d5d2032dd4497e48b33f607d3a1cd14))
+
 ## 1.0.0 (2023-01-05)
 
 
