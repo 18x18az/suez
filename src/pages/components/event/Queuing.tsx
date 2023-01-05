@@ -60,7 +60,7 @@ export class Queuing extends Component<QueuingProps, QueuingState> {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell align="center" colSpan={3}>
+                            <TableCell align="center" colSpan={5}>
                                 <h1 style={{ margin: 0 }}>Upcoming Matches</h1>
                             </TableCell>
                         </TableRow>
