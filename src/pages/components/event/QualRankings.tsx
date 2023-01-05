@@ -59,7 +59,7 @@ export class QualRankings extends Component<QRankingsProps, QRankingsState> {
                                 <TableRow>
                                     <TableCell align='left'>Team</TableCell>
                                     <TableCell align='center'>W-L-T</TableCell>
-                                    <TableCell align='center'>WP / AP / SP</TableCell>
+                                    <TableCell align='center'>Average<br/>WP / AP / SP</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>

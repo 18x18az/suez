@@ -3,7 +3,7 @@ import { Fragment, useEffect, useState } from "react";
 import { Accordion, AccordionSummary, AccordionDetails, Table, TableBody, TableRow, TableCell, TableHead } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
-import { Match } from "./event/Match";
+import { Match, ScoredMatch } from "./event/Match";
 import Waiting from "./Waiting";
 import { useParams } from "react-router-dom";
 import { bifrost } from "../../ws";
@@ -160,8 +160,24 @@ export const Team = (props: TeamProps) => {
         });
 
         // results section
-        let resultsOutput = 
+        let resultsOutput: any = 
                 <p>No match results found!</p>;
+        let results: ISimpleMatchResult[] = [];
+        for (const property in data.results) {
+            results.push(data.results[property]);
+        }
+        if (results.length > 0) {
+            resultsOutput = []
+            results.forEach((result: ISimpleMatchResult) => {
+                const resultItem =<ScoredMatch
+                    teams={props.teams!}
+                    name={result.name}
+                    match={data.schedule[result.name]}
+                    scoreBlue={result.blue.score}
+                    scoreRed={result.red.score}/>
+                resultsOutput.push(resultItem);
+            });
+        }
 
         let matches: IMatchInfo[] = [];
         for (const property in data.schedule) {
@@ -200,7 +216,11 @@ export const Team = (props: TeamProps) => {
                         Match Results
                     </AccordionSummary>
                     <AccordionDetails>
-                    {resultsOutput}
+                        <Table>
+                            <TableBody>
+                            {resultsOutput}
+                            </TableBody>
+                        </Table>
                     </AccordionDetails>
                 </Accordion>
                 <Accordion defaultExpanded={true}>
