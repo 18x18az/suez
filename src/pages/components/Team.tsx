@@ -1,4 +1,4 @@
-import { ITeams, ITeam, IPath, IMatchList, MatchId, IMatchInfo, ISimpleMatchResult, ISkillsRankingData, IRankingData, ISkillsRankings, IRankings } from "@18x18az/rosetta";
+import { IAllianceTeams, ITeams, ITeam, IPath, IMatchList, MatchId, IMatchInfo, ISimpleMatchResult, ISkillsRankingData, IRankingData, ISkillsRankings, IRankings, IFieldState } from "@18x18az/rosetta";
 import { Fragment, useEffect, useState } from "react";
 import { Accordion, AccordionSummary, AccordionDetails, Table, TableBody, TableRow, TableCell, TableHead } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -24,6 +24,7 @@ export interface TeamEventData {
 
 interface TeamProps {
     teams: ITeams | null
+    matches: IMatchList | null
     lastMessagePath: IPath | null
     lastMessageBody: any
 }
@@ -35,6 +36,7 @@ export const Team = (props: TeamProps) => {
     const [data, setData] = useState<TeamEventData | null>(null);
     const [skills, setSkills] = useState<ISkillsRankings | null>(null);
     const [rankings, setRankings] = useState<IRankings | null>(null);
+    const [field, setField] = useState<IFieldState | null>(null);
 
     if (!team) {
         for (const property in props.teams) {
@@ -57,6 +59,10 @@ export const Team = (props: TeamProps) => {
         bifrost.get(['rankings']);
     }
 
+    if (!field) {
+        bifrost.get(['field']);
+    }
+
     useEffect(() => {
         if (props && props.lastMessagePath && props.lastMessagePath[0] === "team" && props.lastMessagePath.length >= 2) {
             if (props.lastMessagePath[1] === number) {
@@ -67,11 +73,14 @@ export const Team = (props: TeamProps) => {
             setRankings(props.lastMessageBody);
         }
         else if (props && props.lastMessagePath && props.lastMessagePath[0] === "skills") {
-            setSkills(props.lastMessageBody)
+            setSkills(props.lastMessageBody);
         }
-    }, [props])
+        else if (props && props.lastMessagePath && props.lastMessagePath[0] === "field") {
+            setField(props.lastMessageBody);
+        }
+    }, [props]);
 
-    if (team && rankings && skills && props.teams) {
+    if (field && team && rankings && skills && props.teams && props.matches) {
         // rankings section
         let rankingsOutput = <div></div>
 
@@ -159,7 +168,32 @@ export const Team = (props: TeamProps) => {
             }
         });
 
-        let scheduleOutput = <p>nope</p>;
+        // search for matches
+        let teamMatches: IMatchInfo[] = [];
+        for (const property in props.matches) {
+            const match = props.matches[property] as IMatchInfo;
+            let IDs = [];
+            IDs.push((match.blue as IAllianceTeams).team1);
+            IDs.push((match.blue as IAllianceTeams).team2);
+            IDs.push((match.red as IAllianceTeams).team1);
+            IDs.push((match.red as IAllianceTeams).team2);
+            if (IDs.includes(team.id as string)) {
+                teamMatches.push(match);
+                console.log (match)
+            }
+        }
+        
+        let scheduleOutput: any = [];
+        if (teamMatches) {
+            for (let i = 0; i < teamMatches.length; i++) {
+                const matchItem = <Match teams={props.teams} match={teamMatches[i]} />
+                scheduleOutput.push(matchItem);
+            }
+        }
+        else {
+            scheduleOutput = <div>No matches for {team.number} found</div>
+        }
+
         return (
             <Fragment>
                 <h1 style={{ marginBottom: 0}}>{team.number}</h1>

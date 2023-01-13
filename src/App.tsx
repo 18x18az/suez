@@ -106,6 +106,7 @@ class App extends Component<IProps, IState> {
             <Route path="/teams/:number"
               element={<Team
                 teams={this.state.teams}
+                matches={this.state.matches}
                 lastMessagePath={this.state.lastMessagePath}
                 lastMessageBody={this.state.lastMessagePayload}
               />}/>
