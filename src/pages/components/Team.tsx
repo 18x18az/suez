@@ -46,7 +46,7 @@ export const Team = (props: TeamProps) => {
     }
 
     if (!data) {
-        bifrost.get(['team', number as string]);
+        //bifrost.get(['team', number as string]);
     }
 
     if (!skills) {
@@ -71,7 +71,7 @@ export const Team = (props: TeamProps) => {
         }
     }, [props])
 
-    if (team && data && rankings && skills && props.teams) {
+    if (team && rankings && skills && props.teams) {
         // rankings section
         let rankingsOutput = <div></div>
 
@@ -159,46 +159,7 @@ export const Team = (props: TeamProps) => {
             }
         });
 
-        // search for results
-        let results: ISimpleMatchResult[] = [];
-        for (const property in data.results) {
-            results.push(data.results[property]);
-        }
-
-        let matches: IMatchInfo[] = [];
-        for (const property in data.schedule) {
-            matches.push(data.schedule[property])
-        }
-        let scheduleOutput = [];
-        if (matches) {
-            for (let i = 0; i < matches.length; i++) {
-                // search for match name in results
-                // if we find it, push a ScoredMatch instead
-                let isScored: boolean = false;
-                for (let j = 0; j < results.length; j++) {
-                    console.log(j)
-                    if (matches[i].matchId === results[j].name) {
-                        isScored = true;
-                        break;
-                    }
-                }
-                
-                // generate output
-                if (isScored) {
-                    const resultItem = <ScoredMatch
-                        teams={props.teams!}
-                        name={data.results[matches[i].matchId].name}
-                        match={matches[i]}
-                        scoreBlue={data.results[matches[i].matchId].blue.score}
-                        scoreRed={data.results[matches[i].matchId].red.score}/>;
-                    scheduleOutput.push(resultItem);
-                }
-                else {
-                    const matchItem = <Match teams={props.teams} match={matches[i]} />
-                    scheduleOutput.push(matchItem);
-                }
-            }
-        }
+        let scheduleOutput = <p>nope</p>;
         return (
             <Fragment>
                 <h1 style={{ marginBottom: 0}}>{team.number}</h1>
