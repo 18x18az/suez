@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.0](https://github.com/18x18az/suez/compare/v1.1.0...v1.2.0) (2023-01-13)
+
+
+### Features
+
+* matches can support underlining a team ([ded4fe8](https://github.com/18x18az/suez/commit/ded4fe81e8669f335de2d0a9893713a0af1f77bd))
+* team page no longer shows results ([3b4def2](https://github.com/18x18az/suez/commit/3b4def246dbc49b8aff439de503d8053fcf1ae28))
+* upcoming matches will show the current match ([d8a42b3](https://github.com/18x18az/suez/commit/d8a42b375716fd68c6b721d1c863280a86143620))
+
 ## [1.1.0](https://github.com/18x18az/suez/compare/v1.0.0...v1.1.0) (2023-01-05)
 
 
