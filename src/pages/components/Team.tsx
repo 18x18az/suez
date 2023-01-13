@@ -186,7 +186,7 @@ export const Team = (props: TeamProps) => {
         let scheduleOutput: any = [];
         if (teamMatches) {
             for (let i = 0; i < teamMatches.length; i++) {
-                const matchItem = <Match teams={props.teams} match={teamMatches[i]} />
+                const matchItem = <Match teams={props.teams} match={teamMatches[i]} highlight={team.id} />
                 scheduleOutput.push(matchItem);
             }
         }
