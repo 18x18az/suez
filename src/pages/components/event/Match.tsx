@@ -7,16 +7,26 @@ interface TeamProps {
     id: TeamId
     color: string
     teams: ITeams
+    highlight?: TeamId
 }
 
 const Team = (props: TeamProps) => {
-    return (
-        <p className={props.color}>{props.teams[props.id].number}</p>
-    )
+    if (props.highlight === props.id) {
+        return (
+            <u className={props.color}>{props.teams[props.id].number}</u>
+        )
+    }
+    else {
+        return (
+            <p className={props.color}>{props.teams[props.id].number}</p>
+        )
+    }
+
 }
 interface MatchProps {
     match: IMatchInfo
     teams: ITeams
+    highlight?: TeamId
 }
 
 export const Match = (props: MatchProps) => {
@@ -26,8 +36,8 @@ export const Match = (props: MatchProps) => {
     return (
         <TableRow>
             <TableCell align="center">
-                <Team id={(red as IAllianceTeams).team1} color={"redMatch"} teams={props.teams}/>
-                <Team id={(red as IAllianceTeams).team2} color={"redMatch"} teams={props.teams}/>
+                <Team id={(red as IAllianceTeams).team1} color={"redMatch"} teams={props.teams} highlight={props.highlight}/>
+                <Team id={(red as IAllianceTeams).team2} color={"redMatch"} teams={props.teams} highlight={props.highlight}/>
             </TableCell>
             <TableCell/>
             <TableCell align="center">
@@ -35,8 +45,8 @@ export const Match = (props: MatchProps) => {
             </TableCell>
             <TableCell/>
             <TableCell align="center">
-                <Team id={(blue as IAllianceTeams).team1} color={"blueMatch"} teams={props.teams}/>
-                <Team id={(blue as IAllianceTeams).team2} color={"blueMatch"} teams={props.teams}/>
+                <Team id={(blue as IAllianceTeams).team1} color={"blueMatch"} teams={props.teams} highlight={props.highlight}/>
+                <Team id={(blue as IAllianceTeams).team2} color={"blueMatch"} teams={props.teams} highlight={props.highlight}/>
             </TableCell>
         </TableRow>
     )

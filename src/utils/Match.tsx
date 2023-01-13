@@ -14,7 +14,7 @@ export function getNextMatches(matches: IMatchList, match: IMatchInfo, depth: nu
     if (!nextMatches) {
         nextMatches = [nextMatch];
     } else {
-        nextMatches.unshift(nextMatch);
+        nextMatches.unshift(match);
     }
 
     return nextMatches;
