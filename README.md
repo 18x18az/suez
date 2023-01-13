@@ -1,6 +1,6 @@
 # Suez
 18x18az webapp for live event updates.
-This repository is for the frontend, accessible at suez.18x18az.org.
+This repository is for the frontend, accessible at [event.18x18az.org](https://event.18x18az.org).
 
 ## Support
 
