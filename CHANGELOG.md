@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/18x18az/suez/compare/v1.2.0...v1.3.0) (2023-01-21)
+
+
+### Features
+
+* add accordion for non-checked in teams during inspection phase ([eff201e](https://github.com/18x18az/suez/commit/eff201ebd416d323bb29245d30cf44b9f3de68f2))
+
 ## [1.2.0](https://github.com/18x18az/suez/compare/v1.1.0...v1.2.0) (2023-01-13)
 
 
