@@ -46,6 +46,7 @@ export class Queuing extends Component<QueuingProps, QueuingState> {
             const state = this.state.field;
             const match = this.props.matches[state.match];
             const nextMatches = getNextMatches(this.props.matches, match, 5);
+            nextMatches?.unshift(match);
 
             let upcomingMatchItems = [];
             if (nextMatches) {
