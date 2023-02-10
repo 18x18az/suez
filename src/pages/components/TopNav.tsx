@@ -3,7 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { Link } from 'react-router-dom';
-import { AppBar } from '@mui/material';
+import { AppBar, Toolbar } from '@mui/material';
 
 const currentTab = () => {
   let path = window.location.pathname;
@@ -22,7 +22,7 @@ const TopNav = () => {
   return (
     <Box sx={{ width: '100%' }}>
     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-      <AppBar position="sticky">
+      <AppBar position="fixed">
       <Tabs value={value} onChange={handleChange} variant="scrollable" scrollButtons="auto">
         <Tab label="Queuing" component={Link} to={"/"}/>
         <Tab label="Qual Rankings" component={Link} to={"/rankings/qual"}/>
@@ -30,6 +30,7 @@ const TopNav = () => {
         <Tab label="Team List"component={Link} to={"/teams"}/>
       </Tabs>
       </AppBar>
+      <Toolbar/>
     </Box>
     </Box>
     );

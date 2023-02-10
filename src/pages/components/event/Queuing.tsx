@@ -46,6 +46,7 @@ export class Queuing extends Component<QueuingProps, QueuingState> {
             const state = this.state.field;
             const match = this.props.matches[state.match];
             const nextMatches = getNextMatches(this.props.matches, match, 5);
+            nextMatches?.unshift(match);
 
             let upcomingMatchItems = [];
             if (nextMatches) {
@@ -60,7 +61,7 @@ export class Queuing extends Component<QueuingProps, QueuingState> {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell align="center" colSpan={3}>
+                            <TableCell align="center" colSpan={5}>
                                 <h1 style={{ margin: 0 }}>Upcoming Matches</h1>
                             </TableCell>
                         </TableRow>

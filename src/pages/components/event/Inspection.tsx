@@ -39,15 +39,35 @@ export class Inspection extends Component<InspectionProps, InspectionState> {
 
     render() {
         if (this.state && this.props.teams && this.state.inspection) {
-            if (this.state.inspection.notStarted.length + this.state.inspection.partial.length === 0) {
+            if (this.state.inspection.notStarted.length + this.state.inspection.partial.length + this.state.inspection.notCheckedIn.length === 0) {
                 return (
                     <Fragment>
                         <h1>Inspection Status</h1>
-                        <p>All checked-in teams inspected!</p>
+                        <p>All teams inspected!</p>
                     </Fragment>
                 )
             }
             else {
+                let notCheckedIn = <div></div>
+                if (this.state.inspection.notCheckedIn.length > 0) {
+                    notCheckedIn = <Accordion>
+                        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                        <Typography>Not Checked In</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <ul>
+                                {
+                                    this.state.inspection.notCheckedIn.map((team: TeamId) => {
+                                        return(
+                                            <li>{this.props.teams![team].number}</li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                        </AccordionDetails>
+                    </Accordion>
+                }
+
                 let notStarted = <div></div>
                 if (this.state.inspection.notStarted.length > 0) {
                     notStarted = <Accordion>
@@ -91,6 +111,7 @@ export class Inspection extends Component<InspectionProps, InspectionState> {
                 return (
                     <Fragment>
                         <h1>Inspection Status</h1>
+                        {notCheckedIn}
                         {notStarted}
                         {partial}
                     </Fragment>
