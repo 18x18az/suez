@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/18x18az/suez/compare/v1.3.0...v1.3.1) (2023-02-10)
+
+
+### Bug Fixes
+
+* Upcoming matches won't skip the 4th match ([bfb3844](https://github.com/18x18az/suez/commit/bfb384467f9402604f5adb88c9bf29cf94c0d450))
+
 ## [1.3.0](https://github.com/18x18az/suez/compare/v1.2.0...v1.3.0) (2023-01-21)
 
 
