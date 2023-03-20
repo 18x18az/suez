@@ -1,11 +1,19 @@
 # Suez
+- [Suez](#suez)
+    - [About](#about)
+    - [Support](#support)
+    - [Building the project](#building-the-project)
+        - [Prerequisites](#prerequisites)
+        - [Instructions](#instructions)
+    - [License](#license)
+## About
 Free and open-source webapp providing live event updates for events using [Talos](https://github.com/18x18az/talos).
 
 ## Support
 Please open an issue for bugs you've found or features you think are missing.
 ## Building the project
 ### Prerequisites
-- node, npm
+- `node >= 16.19.0`, npm
 - [bifrost](https://github.com/18x18az/bifrost) set-up and running somewhere
 ### Instructions
 ```bash
