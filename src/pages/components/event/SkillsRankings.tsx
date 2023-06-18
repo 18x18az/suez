@@ -47,10 +47,10 @@ export class SkillsRankings extends Component<SRankingsProps, SRankingsState> {
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell align='left'>Team</TableCell>
-                                    <TableCell align='center'>Total</TableCell>
-                                    <TableCell align='center'>Highest Programming</TableCell>
-                                    <TableCell align='center'>Highest Driver</TableCell>
+                                    <TableCell width='40%' align='left'>Team</TableCell>
+                                    <TableCell width='20%' align='center'>Total</TableCell>
+                                    <TableCell width='20%' align='center'>Highest Coding</TableCell>
+                                    <TableCell width='20%' align='center'>Highest Driving</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -59,7 +59,7 @@ export class SkillsRankings extends Component<SRankingsProps, SRankingsState> {
                                         return (
                                             <TableRow component={Link} to={`/teams/${this.props.teams![skillsData.team].number}`}
                                                         sx={{ textDecoration: 'none' }}>
-                                                <TableCell><b>{skillsData.rank}.</b> {this.props.teams![skillsData.team].number}</TableCell>
+                                                <TableCell><b><span style={{fontSize: '1.5rem'}}>{skillsData.rank}.</span></b> <span style={{fontSize: '1rem'}}>{this.props.teams![skillsData.team].number}</span></TableCell>
                                                 <TableCell align='center'>{skillsData.total}</TableCell>
                                                 <TableCell align='center'>{skillsData.highProgramming}</TableCell>
                                                 <TableCell align='center'>{skillsData.highDriver}</TableCell>
