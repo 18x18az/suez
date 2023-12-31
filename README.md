@@ -4,8 +4,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ### Prerequisites
 - Node (v18+)
 - Yarn Berry
-First, run the development server:
-
 ```bash
 npm run dev
 # or
